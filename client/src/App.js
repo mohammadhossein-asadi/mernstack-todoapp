@@ -101,8 +101,8 @@ function App() {
         <button type="submit">Add</button>
       </form>
       <div className="todo-listItems">
-        {listItems.map((item) => (
-          <div className="todo-item">
+        {listItems.map((item, index) => (
+          <div className="todo-item" key={index}>
             {isUpdating === item._id ? (
               renderUpdateForm()
             ) : (
