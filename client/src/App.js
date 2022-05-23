@@ -1,11 +1,30 @@
+import { useState } from "react";
+import axios from "axios";
 import "./App.css";
 
 function App() {
+  const [itemText, setItemText] = useState("");
+
+  const addItem = async () => {
+    try {
+      const res = await axios.post();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="App">
       <h1>Todo List</h1>
       <form className="form">
-        <input type="text" placeholder="Add Todo Item" />
+        <input
+          type="text"
+          placeholder="Add Todo Item"
+          onChange={(e) => {
+            setItemText(e.target.value);
+          }}
+          value={itemText}
+        />
         <button type="submit">Add</button>
       </form>
       <div className="todo-listItems">

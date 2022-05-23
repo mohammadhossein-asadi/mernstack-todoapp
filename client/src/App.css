@@ -49,6 +49,10 @@
   margin-bottom: 10px;
 }
 
+.item-content {
+  width: 60%;
+}
+
 .todo-item button {
   border: none;
   border-radius: 6px;
@@ -62,6 +66,7 @@
 
 .update-item {
   background-color: goldenrod;
+  color: #fff;
 }
 .delete-item {
   background-color: green;
