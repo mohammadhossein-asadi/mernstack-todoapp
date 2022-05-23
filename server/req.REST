@@ -1,0 +1,20 @@
+POST  http://localhost:5500/api/item
+Content-Type: application/json
+
+{
+    "item": "This is the first todo item"
+}
+
+###
+
+GET http://localhost:5500/api/items
+Content-Type: application/json
+
+###
+
+PUT http://localhost:5500/api/item/:628bcb0d0080f9abb247f0ad
+Content-Type: application/json
+
+{
+    "item": "This is the first todo item updated"
+}
