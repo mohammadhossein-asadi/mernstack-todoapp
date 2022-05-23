@@ -7,7 +7,10 @@ function App() {
 
   const addItem = async () => {
     try {
-      const res = await axios.post();
+      const res = await axios.post("http://localhost:5500/api/item", {
+        item: itemText,
+      });
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -16,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <h1>Todo List</h1>
-      <form className="form">
+      <form className="form" onSubmit={addItem}>
         <input
           type="text"
           placeholder="Add Todo Item"
