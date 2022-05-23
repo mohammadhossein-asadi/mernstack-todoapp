@@ -51,16 +51,26 @@ function App() {
         `http://localhost:5500/api/item/${isUpdating}`,
         { item: updateItemText }
       );
+
+      console.log(res.data);
+      const updatedItemIndex = listItems.findIndex(
+        (item) => item._id === isUpdating
+      );
+      const updatedItem = (listItems[updatedItemIndex].item = updateItemText);
       setUpdateItemText("");
       setIsUpdating("");
-      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
   };
 
   const renderUpdateForm = () => (
-    <form className="update-form">
+    <form
+      className="update-form"
+      onSubmit={(e) => {
+        updateItem(e);
+      }}
+    >
       <input
         type="text"
         className="update-new-input"
