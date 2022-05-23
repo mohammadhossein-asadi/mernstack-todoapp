@@ -5,7 +5,8 @@ import "./App.css";
 function App() {
   const [itemText, setItemText] = useState("");
 
-  const addItem = async () => {
+  const addItem = async (e) => {
+    e.preventDefault();
     try {
       const res = await axios.post("http://localhost:5500/api/item", {
         item: itemText,
@@ -19,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <h1>Todo List</h1>
-      <form className="form" onSubmit={addItem}>
+      <form className="form" onSubmit={(e) => addItem(e)}>
         <input
           type="text"
           placeholder="Add Todo Item"
