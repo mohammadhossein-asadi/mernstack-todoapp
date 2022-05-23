@@ -5,6 +5,7 @@ import "./App.css";
 function App() {
   const [itemText, setItemText] = useState("");
   const [listItems, setListItems] = useState([]);
+  const [isUpdating, setIsUpdating] = useState("");
 
   const addItem = async (e) => {
     e.preventDefault();
@@ -12,7 +13,7 @@ function App() {
       const res = await axios.post("http://localhost:5500/api/item", {
         item: itemText,
       });
-      console.log(res);
+      setListItems((prev) => [...prev, res.data]);
       setItemText("");
     } catch (err) {
       console.log(err);
@@ -42,6 +43,15 @@ function App() {
     }
   };
 
+  const renderUpdateForm = () => (
+    <form>
+      <input type="text" className="update-new-input" placeholder="New Item" />
+      <button type="submit" className="update-new-btn">
+        Update
+      </button>
+    </form>
+  );
+
   return (
     <div className="App">
       <h1>Todo List</h1>
@@ -59,14 +69,27 @@ function App() {
       <div className="todo-listItems">
         {listItems.map((item) => (
           <div className="todo-item">
-            <p className="item-content">{item.item}</p>
-            <button className="update-item">Update</button>
-            <button
-              className="delete-item"
-              onClick={() => deleteItem(item._id)}
-            >
-              Delete
-            </button>
+            {isUpdating === item._id ? (
+              renderUpdateForm()
+            ) : (
+              <>
+                <p className="item-content">{item.item}</p>
+                <button
+                  className="update-item"
+                  onClick={() => {
+                    setIsUpdating(item._id);
+                  }}
+                >
+                  Update
+                </button>
+                <button
+                  className="delete-item"
+                  onClick={() => deleteItem(item._id)}
+                >
+                  Delete
+                </button>
+              </>
+            )}
           </div>
         ))}
       </div>
