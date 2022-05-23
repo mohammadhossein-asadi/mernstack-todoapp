@@ -6,6 +6,7 @@ function App() {
   const [itemText, setItemText] = useState("");
   const [listItems, setListItems] = useState([]);
   const [isUpdating, setIsUpdating] = useState("");
+  const [updateItemText, setUpdateItemText] = useState("");
 
   const addItem = async (e) => {
     e.preventDefault();
@@ -43,9 +44,32 @@ function App() {
     }
   };
 
+  const updateItem = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.put(
+        `http://localhost:5500/api/item/${isUpdating}`,
+        { item: updateItemText }
+      );
+      setUpdateItemText("");
+      setIsUpdating("");
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const renderUpdateForm = () => (
-    <form>
-      <input type="text" className="update-new-input" placeholder="New Item" />
+    <form className="update-form">
+      <input
+        type="text"
+        className="update-new-input"
+        placeholder="New Item"
+        onChange={(e) => {
+          setUpdateItemText(e.target.value);
+        }}
+        value={updateItemText}
+      />
       <button type="submit" className="update-new-btn">
         Update
       </button>
