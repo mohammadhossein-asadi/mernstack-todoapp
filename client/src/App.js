@@ -59,7 +59,10 @@ function App() {
           <div className="todo-item">
             <p className="item-content">{item.item}</p>
             <button className="update-item">Update</button>
-            <button className="delete-item" onClick={deleteItem(item._id)}>
+            <button
+              className="delete-item"
+              onClick={() => deleteItem(item._id)}
+            >
               Delete
             </button>
           </div>
