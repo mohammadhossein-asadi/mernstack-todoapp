@@ -34,7 +34,7 @@ function App() {
   const deleteItem = async (id) => {
     try {
       const res = await axios.delete(`http://localhost:5500/api/item/${id}`);
-      console.log(res);
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -59,7 +59,9 @@ function App() {
           <div className="todo-item">
             <p className="item-content">{item.item}</p>
             <button className="update-item">Update</button>
-            <button className="delete-item">Delete</button>
+            <button className="delete-item" onClick={deleteItem(item._id)}>
+              Delete
+            </button>
           </div>
         ))}
       </div>
