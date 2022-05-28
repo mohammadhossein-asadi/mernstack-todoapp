@@ -5,10 +5,18 @@
   background-color: #fff;
   width: 500px;
   margin: 50px auto;
-  padding: 10px;
+  padding: 75px;
   border-radius: 8px;
 }
 
+body {
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+}
 .App h1 {
   text-align: center;
 }
@@ -31,7 +39,12 @@
   outline: none;
 }
 .form button[type="submit"] {
-  background-color: #008080;
+  background: rgb(34, 184, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 184, 195, 1) 18%,
+    rgba(45, 253, 135, 1) 58%
+  );
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -48,6 +61,9 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 6px;
+  padding: 6px;
 }
 
 .item-content {
@@ -65,8 +81,21 @@
   outline: none;
 }
 
+button {
+  font-weight: bold;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
 .update-item {
-  background-color: goldenrod;
+  background: rgb(152, 34, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(152, 34, 195, 1) 10%,
+    rgba(45, 253, 135, 1) 59%
+  );
   color: #fff;
 }
 .delete-item {
