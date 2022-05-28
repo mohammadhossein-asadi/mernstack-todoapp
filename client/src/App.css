@@ -45,6 +45,10 @@ body {
 .form button[type="submit"]:focus {
   outline: none;
 }
+.form input[type="text"] {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px;
+  border: 1px solid gray;
+}
 .form button[type="submit"] {
   background-color: #3f5efb;
   color: #fff;
